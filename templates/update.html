@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Insert</title>
+    <link rel='stylesheet' href='static/css/style.css'/>
+    <script src='static/js/script.js'></script>
+</head>
+
+<body>
+    <table>
+        <form action='update' method='POST'>
+            <tr>
+                <td><label for='id'>ID:</label><td>
+                <td><input type='number' id='id' name='id' value='{{student.id}}' readonly/><td>
+            </tr>
+
+            <tr>
+                <td><label for='name'>Name:</label><td>
+                <td><input type='text' id='name' name='name' value='{{student.name}}'/><td>
+            </tr>
+
+            <tr>
+                <td><label for='dept'>Department:</label><td>
+                <td><input type='text' id='dept' name='dept' value='{{student.department}}'/><td>
+            </tr>
+
+            <tr>
+                <td><label for='dob'>Birht Date:</label><td>
+                {% set d = student.birthDate.day %}
+                {% set m = student.birthDate.month %}
+                {% set y = student.birthDate.year %}
+                <td><input type='date' id='dob' name='dob' value='{{"%04d-%02d-%02d" % (y, m, d)}}'/><td>
+            </tr>
+
+            <tr>
+                <td><button type='submit'> Update </button></td>
+                <td></td>
+            </tr>
+        </form>
+    </table>
+</body>

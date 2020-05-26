@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Home</title>
+    <link rel='stylesheet' href='static/css/style.css'/>
+    <script src='static/js/script.js'></script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Birth Date</th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        {% for s in students %}
+            <tr>
+                <td>{{s.id}}</td>
+                <td>{{s.name}}</td>
+                <td>{{s.department}}</td>
+                <td>{{s.birthDate}}</td>
+                <td><button onclick='goTo("update?id={{s.id}}")'>Update</button></td>
+                <td><button onclick='goTo("delete?id={{s.id}}")'>Delete</button></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <button onclick='goTo("insert")'>Insert</button>
+</body>

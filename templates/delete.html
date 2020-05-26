@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Delete</title>
+    <link rel='stylesheet' href='static/css/style.css'/>
+    <script src='static/js/script.js'></script>
+</head>
+
+<body>
+
+    {% if student == None %}
+        <p> No student to delete </p>
+
+    {% else %}
+        <table>
+            <tr>
+                <td><label for='id'>ID:</label><td>
+                <td><input type='number' id='id' value='{{student.id}}' disabled/><td>
+            </tr>
+
+            <tr>
+                <td><label for='name'>Name:</label><td>
+                <td><input type='text' id='name' value='{{student.name}}' disabled/><td>
+            </tr>
+
+            <tr>
+                <td><label for='dept'>Department:</label><td>
+                <td><input type='text' id='dept' value='{{student.department}}' disabled/><td>
+            </tr>
+
+            <tr>
+                <td><label for='dob'>Birht Date:</label><td>
+                {% set d = student.birthDate.day %}
+                {% set m = student.birthDate.month %}
+                {% set y = student.birthDate.year %}
+                
+                <td><input type='date' id='dob' value='{{"%04d-%02d-%02d" % (y, m, d)}}' disabled/><td>
+            </tr>
+
+            <tr>
+                <td>
+                    <form action='delete' method='POST'> 
+                        <input type='hidden' name='id' value='{{student.id}}'/>
+                        <button type='submit'>Delete</button>
+                    </form>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    {% endif %}
+    
+</body>
